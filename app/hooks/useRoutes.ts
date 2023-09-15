@@ -1,37 +1,40 @@
 import { useMemo } from "react";
-import {HiChat} from "react-icons/hi";
+import { HiChat } from "react-icons/hi";
 
 import {
-
-    HiArrowLeftOnReactangle,
+    HiArrowLeftOnRectangle,
     HiUsers
 } from "react-icons/hi2";
 
-import {signOut} from "next-auth/react";
+import { signOut } from "next-auth/react";
 import useConversation from "./useConversation";
 import { usePathname } from "next/navigation";
 
-const useRoutes=()=>{
-
-    const pathname=usePathname();
-    const {conversationId}=useConversation();
-    const routes=useMemo(()=>[
+const useRoutes = () => {
+    const pathname = usePathname();
+    const { conversationId } = useConversation();
+    const routes = useMemo(() => [
         {
-            label:'Chat',
-            href:'/conversations',
-            icons:'HiChat',
-            active:pathname=='./conversations' || !!conversationId
+            label: 'Chat',
+            href: '/conversations',
+            icon: HiChat,
+            active: pathname === '/conversations' || !!conversationId
         },
         {
-            label:'Users',
-            href:'/users',
-            icon:HiUsers,
-            active:pathname=='/users'
-        },{
-            label:'Logout',
-            href:'#',
-            onClick:()=>signOut(),
-            icon:HiArrowLeftOnReactangle
+            label: 'Users',
+            href: '/users',
+            icon: HiUsers,
+            active: pathname === '/users'
+        },
+        {
+            label: 'Logout',
+            href: '#',
+            onClick: () => signOut(),
+            icon: HiArrowLeftOnRectangle
         }
-    ],[pathname,conversationId]);
+    ], [pathname, conversationId]);
+
+    return routes;
 }
+
+export default useRoutes;
