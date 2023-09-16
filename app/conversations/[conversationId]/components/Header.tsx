@@ -1,6 +1,7 @@
 "use client"
 
 import Profile from "@/app/components/Profile";
+import useActiveList from "@/app/hooks/useActiveLists";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import { Conversation, User } from "@prisma/client";
 import Link from "next/link";
@@ -15,10 +16,16 @@ interface Props {
 
 const Header: React.FC<Props> = ({ conversation }) => {
     const otherUser=useOtherUser(conversation);
+    const { members } = useActiveList();
+    const isActive = members.indexOf(otherUser?.email!) != -1;
 
     const statusText=useMemo(()=>{
-        return 'online'
-    },[conversation]); 
+
+        return isActive?'online':'offline';
+
+    },[conversation, isActive]); 
+
+
     return (
         <div className="bg-white
         w-full

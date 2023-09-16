@@ -1,12 +1,17 @@
 "use client"
 import { User } from "@prisma/client"
 import Image from "next/image";
+import useActiveList from "../hooks/useActiveLists";
 
 interface Props {
     user?: User;
 }
+
+
 const Profile: React.FC<Props> = ({ user }) => {
 
+    const { members } = useActiveList();
+    const isActive = members.indexOf(user?.email!) != -1;
     return (<div className="relative">
         <div className="relative
         inline-block
@@ -20,7 +25,7 @@ const Profile: React.FC<Props> = ({ user }) => {
                 alt={"Profile Pic"}
                 fill />
         </div>
-        <span className="absolute 
+        {isActive && (<span className="absolute 
        block
        rounded-full
        bg-green-500
@@ -31,7 +36,8 @@ const Profile: React.FC<Props> = ({ user }) => {
        h-2
        w-2
        md:h-2.5
-       md:w-2.5"/>
+       md:w-2.5"/>)}
+
     </div>
     );
 }

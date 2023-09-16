@@ -5,11 +5,11 @@ import MobileFooter from "./MobileFooter";
 async function Sidebar({ children }: {
     children: React.ReactNode
 }) {
-    const currentUser=await getCurrentUser();
+    const currentUser = await getCurrentUser();
     return (
         <div className="h-full">
-            <MobileFooter/>
-            <DesktopSideBar currentUser={currentUser!}/>
+            <MobileFooter />
+            <DesktopSideBar currentUser={currentUser!} />
             <main className="lg:pl-20 h-full">
                 {children}
             </main>

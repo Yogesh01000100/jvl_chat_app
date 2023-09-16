@@ -27,7 +27,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({ label, icon:Icon, href, onCli
                  flex 
                  gap-x-3
                  rounded-md
-                 p-3
+                 p-4
                  text-sm
                  leading-6
                  font-semibold

@@ -9,6 +9,6 @@ export default withAuth({
 export const config={
     matcher:[
         "/users/:path*",
-        "/convesations/:path*"
+        "/conversations/:path*"
     ]
 }

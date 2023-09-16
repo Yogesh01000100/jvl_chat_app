@@ -19,12 +19,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({
 
   const isOwn = session.data?.user?.email === data?.sender?.email;
 
-  const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
+  const container = clsx('flex gap-1 p-4 mr-3', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
-  const body = clsx('flex flex-col gap-2', isOwn && 'items-end');
+  const body = clsx('flex flex-col gap-2 pt-2', isOwn && 'items-end');
   const message = clsx(
     'text-sm w-fit overflow-hidden', 
-    isOwn ? 'bg-sky-500 text-white' : 'bg-gray-100', 
+    isOwn ? 'bg-sky-500 text-white' : 'bg-gray-300', 
     data.image ? 'rounded-md p-0' : 'rounded-full py-2 px-3',
     !isOwn ? 'rounded-tl-none' : 'rounded-tr-none'
   );
