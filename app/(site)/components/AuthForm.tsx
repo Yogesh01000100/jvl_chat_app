@@ -33,7 +33,7 @@ const AuthForm = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 shadow-md rounded-md text-center w-2/3 m-auto">
+            <div className="bg-white p-8 shadow-md rounded-md text-center w-2/3 md:w-1/2 m-auto">
                 <h1 className="text-2xl font-semibold mb-4">Welcome to Juice Box Chats!</h1>
                 <p className="text-gray-600 mb-4 md:w-[70%] mx-auto">Start chatting and connecting with friends and colleagues.</p>
 
