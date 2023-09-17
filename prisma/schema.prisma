@@ -21,7 +21,6 @@ model User{
   
   accounts Account[]
   messages Message[]
-  // seen message field also possible
 }
 
 model Account{

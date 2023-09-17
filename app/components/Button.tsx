@@ -13,14 +13,7 @@ interface ButtonProps {
 }
 
 
-const Button: React.FC<ButtonProps> = ({ type,
-    fullWidth,
-    children,
-    onClick,
-    secondary,
-    danger,
-    disabled
-}) => {
+const Button: React.FC<ButtonProps> = ({ type,fullWidth,children,onClick,secondary,danger,disabled}) => {
     return (
         <button onClick={onClick} type={type}
             disabled={disabled}
