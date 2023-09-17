@@ -7,6 +7,7 @@ import { FullMessageType } from "@/app/types";
 import { pusherClient } from "@/app/libs/pusher";
 import { find } from "lodash";
 import "./ScrollBar.css";
+
 interface BodyProps {
   initialMessages: FullMessageType[];
 }
@@ -16,9 +17,12 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
   const [messages, setMessages] = useState(initialMessages);
   const { conversationId } = useConversation();
 
+  const scrollToBottom = () => {
+    bottomRef?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
     pusherClient.subscribe(conversationId);
-    bottomRef?.current?.scrollIntoView();
 
     const messageHandler = (message: FullMessageType) => {
       setMessages((current) => {
@@ -27,16 +31,21 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
         }
         return [...current, message];
       });
-      bottomRef?.current?.scrollIntoView();
     };
 
     pusherClient.bind('messages:new', messageHandler);
+
+    scrollToBottom();
 
     return () => {
       pusherClient.unsubscribe(conversationId);
       pusherClient.unbind('messages:new', messageHandler);
     };
-  }, [conversationId]);
+  }, [conversationId, messages]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div className="flex-1 overflow-y-auto bg-gray-50">
