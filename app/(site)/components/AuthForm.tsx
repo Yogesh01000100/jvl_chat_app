@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@/app/components/Button';
 import { signIn, useSession } from 'next-auth/react';
-import toast from 'react-hot-toast/headless';
 import { useRouter } from 'next/navigation';
 import { ClipLoader } from 'react-spinners';
 import { AiFillGithub } from 'react-icons/ai';
@@ -22,10 +21,10 @@ const AuthForm = () => {
         setIsLoading(true);
         try {
             await signIn("github");
-            toast.success("Logged in!");
+            
             router.push('/users')
         } catch (error) {
-            toast.error("Failed to login!");
+            console.error(error);
         } finally {
             setIsLoading(false);
         }

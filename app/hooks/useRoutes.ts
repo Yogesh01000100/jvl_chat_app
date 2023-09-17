@@ -21,7 +21,7 @@ const useRoutes = () => {
   const routes = useMemo(() => [
     {
       label: 'Read Mode',
-      href: '#',
+      href: '##',
       icon: darkMode ? CiDark : CiLight,
       onClick: toggleDarkMode
     },
