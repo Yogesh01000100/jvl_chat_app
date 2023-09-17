@@ -5,7 +5,7 @@ import prisma from "@/app/libs/prismadb";
 import { pusherServer } from "@/app/libs/pusher";
 
 export async function POST(
-  request: Request,
+  request: Request
 ) {
   try {
     const currentUser = await getCurrentUser();

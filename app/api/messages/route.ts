@@ -4,9 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 import { pusherServer } from "@/app/libs/pusher";
 
-export async function POST(
-  request: Request,
-) {
+export async function POST(request: Request) {
   try {
     const currentUser = await getCurrentUser();
     const body = await request.json();
@@ -64,7 +62,6 @@ export async function POST(
 
     return NextResponse.json(newMessage);
   } catch (error) {
-    console.log(error, 'ERROR_MESSAGES')
     return new NextResponse('Error', { status: 500 });
   }
 }
