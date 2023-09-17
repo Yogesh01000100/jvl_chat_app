@@ -36,11 +36,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => 
 
     const lastMessageText = useMemo(() => {
         if (lastMessage?.body) {
-            return lastMessage?.body
-        }else{
-            return 'Started a conversation';
+          return lastMessage?.body;
         }
-    }, [lastMessage]);
+    
+        return "Started a conversation";
+      }, [lastMessage]);
 
 
     return (
