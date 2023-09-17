@@ -23,7 +23,7 @@ const Header: React.FC<Props> = ({ conversation }) => {
 
         return isActive?'online':'offline';
 
-    },[conversation, isActive]); 
+    },[isActive]);
 
 
     return (
